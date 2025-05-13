@@ -130,12 +130,20 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ASN1Structures.cpp" />
+    <ClCompile Include="Communication.cpp" />
+    <ClCompile Include="Entity.cpp" />
     <ClCompile Include="KeyGenerator.cpp" />
+    <ClCompile Include="Logger.cpp" />
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ASN1Structures.h" />
+    <ClInclude Include="Communication.h" />
+    <ClInclude Include="Entity.h" />
+    <ClInclude Include="IDGenerator.h" />
     <ClInclude Include="KeyGenerator.h" />
+    <ClInclude Include="Logger.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

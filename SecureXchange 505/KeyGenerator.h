@@ -13,24 +13,22 @@
 #include <openssl/rand.h>                 
 #include <openssl/ossl_typ.h>
 #include <openssl/params.h>
+#include "IDGenerator.h"
 
 class KeyGenerator
 {
 public:
-	static KeyGenerator& getInstance() {
-		static KeyGenerator instance; 
-		return instance;
-	}
+	void generateECKeyPair(const char* keyPublicFilename, const char* macFilename, const char* keyPrivateFilename, const char* password);
+	unsigned char* generateGMACAuthTag(unsigned char* data, long data_len, const unsigned char* key);
+	int deriveSymmetricKey(const char* filename, unsigned char* coord_x, unsigned char* coord_y, unsigned char** remainder_bytes);
+	unsigned char* AESFancyOFB(const char* sym_key_filename, const char* plain_text, long plaintext_len);
 
-	void generateECKeyPair(const char* keyPublicFilename, const char* keyPrivateFilename, const char* password);
+	RSA* generateRSAKey(const char* RSAPublicFilename, const char* RSAPrivateFilename, int num_bits);
 
 private:
-	KeyGenerator() {}  // constructor privat
-	KeyGenerator(const KeyGenerator&) = delete;
-	KeyGenerator& operator=(const KeyGenerator&) = delete;
 
 	unsigned char* generatePBKDF2Key(long time_diff);
 	long calculateTimeDifference();
-	unsigned char* generateGMACAuthTag(unsigned char* data, long data_len, const unsigned char* key);
+	
 };
 
